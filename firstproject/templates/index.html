@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>News Recommendation System</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>News Recommendation System</h1>
+    
+    <form action="/recommend" method="post">
+        <label for="search_text">Enter a topic:</label>
+        <input type="text" id="search_text" name="search_text" required>
+        <button type="submit">Get Recommendations</button>
+    </form>
+
+    {% if recommendations %}
+    <h2>Recommended Articles</h2>
+    <ul>
+        {% for article in recommendations %}
+        <li>{{ article }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+</body>
+</html>
